@@ -1,11 +1,11 @@
 import StudentInfo from "./studentinfo";
 
 export default function Page() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="mb-4 text-xl font-semibold">Shopping List</h1>
 
+  return (
+    <section className="flex min-h-screen items-center flex-col justify-center">
+      <h1 className="text-xl font-semibold text-black">Shopping List</h1>
       <StudentInfo />
-    </main>
+    </section>
   );
 }
