@@ -27,7 +27,7 @@ export default function NewItem(){
             className="max-w-md mx-auto bg-white p-4 rounded shadow space-y-4">
 
              <div>
-        <label htmlFor="name" className="block text-sm font-medium mb-1">
+        <label htmlFor="name" className="block text-sm font-medium mb-1 text-blue-400">
           Name
         </label>
         <input
@@ -41,7 +41,7 @@ export default function NewItem(){
       </div>
        <div className="flex gap-3">
         <div className="flex-1">
-          <label htmlFor="quantity" className="block text-sm font-medium mb-1">
+          <label htmlFor="quantity" className="block text-sm font-medium mb-1 text-blue-400">
             Quantity
           </label>
           <input
@@ -55,7 +55,7 @@ export default function NewItem(){
           />
         </div>
         <div className="flex-1">
-          <label htmlFor="category" className="block text-sm font-medium mb-1">
+          <label htmlFor="category" className="block text-sm font-medium mb-1 text-blue-400">
             Category
           </label>
           <select
