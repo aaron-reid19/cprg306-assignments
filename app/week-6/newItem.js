@@ -1,32 +1,34 @@
 "use client";
 import { useState } from "react";
 
-export default function NewItem(){
-    const [name, setName] = useState("");
-    const [quantity, setQuantity] = useState(1);
-    const [category, setCategory] = useState("produce");
+export default function NewItem({ onAddItem }) {
+  const [name, setName] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [category, setCategory] = useState("produce");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const item = {
-            name,
-            quantity,
-            category,
-        };
-        console.log(item);
-        alert(`Added: ${name}, quantity: ${quantity}, category: ${category}`);
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        setName("");
-        setQuantity(1);
-        setCategory("produce");
+    const item = {
+      id: crypto.randomUUID(),
+      name,
+      quantity,
+      category,
+    };
 
-    }
-    return (
-        <form
-            onSubmit={handleSubmit}
-            className="max-w-md mx-auto bg-white p-4 rounded shadow space-y-4">
+    onAddItem(item);
 
-             <div>
+    setName("");
+    setQuantity(1);
+    setCategory("produce");
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto bg-white p-4 rounded shadow space-y-4"
+    >
+      <div>
         <label htmlFor="name" className="block text-sm font-medium mb-1 text-blue-400">
           Name
         </label>
@@ -39,7 +41,7 @@ export default function NewItem(){
           className="w-full p-2 rounded-md border border-gray-300"
         />
       </div>
-       <div className="flex gap-3">
+      <div className="flex gap-3">
         <div className="flex-1">
           <label htmlFor="quantity" className="block text-sm font-medium mb-1 text-blue-400">
             Quantity
@@ -86,5 +88,5 @@ export default function NewItem(){
         +
       </button>
     </form>
-    );
+  );
 }
