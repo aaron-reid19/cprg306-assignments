@@ -13,12 +13,14 @@ export default function ItemList({ items }) {
     return a.category.localeCompare(b.category);
   })
   return (
-    <div>
+    <div className="mt-6">
       <div className="flex gap-2 mb-4">
         <button
           onClick={() => setSortBy("name")}
-          className={`px-3 py-1 rounded ${
-            sortBy === "name" ? "bg-gray-800 text-white" : "bg-gray-200"
+          className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${
+            sortBy === "name"
+              ? "bg-slate-900 text-white"
+              : "bg-slate-200 text-slate-700 hover:bg-slate-300"
           }`}
         >
           Sort by Name
@@ -26,17 +28,19 @@ export default function ItemList({ items }) {
 
         <button
           onClick={() => setSortBy("category")}
-          className={`px-3 py-1 rounded ${
-            sortBy === "category" ? "bg-gray-800 text-blue" : "bg-gray-200"
+          className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${
+            sortBy === "category"
+              ? "bg-slate-900 text-white"
+              : "bg-slate-200 text-slate-700 hover:bg-slate-300"
           }`}
         >
           Sort by Category
         </button>
       </div>
-    <ul>
-      {sortedItems.map((item) => (
+    <ul className="grid gap-3 sm:grid-cols-2">
+      {sortedItems.map((item, index) => (
         <Item
-          key={item.id}
+          key={`${item.name}-${item.category}-${index}`}
           name={item.name}
           quantity={item.quantity}
           category={item.category}

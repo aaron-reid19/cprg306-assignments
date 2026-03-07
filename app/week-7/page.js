@@ -1,22 +1,26 @@
- "use client";
+"use client";
 
 import { useState } from "react";
 import NewItem from "./newItem"
 import ItemList from "./item-list"
-import ItemsData from "./items.json";
+import itemsData from "./items.json";
 
 export default function Page() {
-  const [items, setItems] = useState(ItemsData);
+  const [items, setItems] = useState(itemsData);
 
   const handleAddItem = (newItem) => {
-    setItems((currentItems) => [...currentItems, { ...newItem, id: crypto.randomUUID() }]);
+    setItems((prev) => [...prev, newItem]);
   };
 
   return (
-    <main>
-      <h1 className="text-2xl font-bold mb-4">Shopping List</h1>
+    <main className="min-h-screen bg-slate-100 py-8 px-4">
+      <div className="mx-auto max-w-3xl rounded-2xl bg-white p-6 shadow-sm">
+        <h1 className="text-3xl font-semibold text-slate-800 mb-6 tracking-tight">
+          Shopping List
+        </h1>
       <NewItem onAddItem={handleAddItem} />
       <ItemList items={items} />
+      </div>
     </main>
   );
 }
