@@ -1,24 +1,20 @@
 "use client"
 import { useRouter } from "next/navigation";
-// Import the useUserAuth hook
 import { useUserAuth } from "../contexts/AuthContext";
 import { useEffect } from "react";
  
 export default function Page(){
-    // Use the useUserAuth hook to get the user object and the login and logout functions
     const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
- 
     const router = useRouter();
 
     useEffect(() => {
-        if (user) router.push("week-9/shopping-list");
+        if (user) router.push("/week-10/shopping-list");
     }, [user, router]);
 
     const handleSignIn = async () => {
         try {
-            // Sign in to Firebase with GitHub authentication
             await gitHubSignIn(); 
-            router.push("week-9/shopping-list");
+            router.push("/week-10/shopping-list");
         }
         catch (error) {
             console.error("Sign-in failed", error)
@@ -26,7 +22,6 @@ export default function Page(){
     }
     const handleSignOut = async () => {
         try {
-            // Sign out of Firebase
             await firebaseSignOut();
         }
         catch(error){
@@ -49,5 +44,3 @@ export default function Page(){
         </main>
     )
 }
-
-
